@@ -4,11 +4,11 @@
       <h2>Login</h2>
       <form>
         <v-text-field
-          v-model="name"
+          v-model="email"
           v-validate="'required|max:10'"
           :counter="10"
-          label="Name"
-          data-vv-name="name"
+          label="email"
+          data-vv-name="email"
           required
         ></v-text-field>
         <v-text-field v-model="password" label="password" data-vv-name="password" required></v-text-field>
@@ -18,7 +18,14 @@
   </v-row>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      email: "",
+      password: ""
+    };
+  }
+};
 </script>
 
 <style>
