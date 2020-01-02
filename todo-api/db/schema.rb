@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 2020_01_02_150758) do
     t.string "title"
     t.boolean "is_done"
     t.string "user_id"
-    t.string "integer"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -25,7 +24,6 @@ ActiveRecord::Schema.define(version: 2020_01_02_150758) do
     t.string "name"
     t.string "email"
     t.string "uid"
-    t.string "string"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
