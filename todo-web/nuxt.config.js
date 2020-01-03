@@ -33,7 +33,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    "@/plugins/vuetify"
+    "@/plugins/vuetify",
+    "@/plugins/auth-check"
   ],
   /*
   ** Nuxt.js dev-modules

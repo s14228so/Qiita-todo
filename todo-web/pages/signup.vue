@@ -53,13 +53,12 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(res => {
-          console.log(res.user);
-          const newUser = {
+          const user = {
             email: res.user.email,
             name: this.name,
             uid: res.user.uid
           };
-          axios.post("/v1/users", newUser).then(() => {
+          axios.post("/v1/users", { user }).then(() => {
             this.$router.push("/");
           });
         })

@@ -19,9 +19,19 @@ export default {
       title: ""
     };
   },
+  computed: {
+    user() {
+      return this.$store.state.currentUser;
+    }
+  },
   methods: {
     handleSubmit() {
-      this.$emit("submit", this.title); //この行を追加
+      const todo = {
+        title: this.title,
+        user_id: this.user.id,
+        is_done: false
+      };
+      this.$emit("submit", todo); //この行を追加
       this.title = "";
     }
   }

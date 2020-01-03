@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p v-if="user">{{user.name}}</p>
     <AddTodo @submit="addTodo" />
     <TodoList :todos="todos" />
   </div>
@@ -8,14 +9,16 @@
 <script>
 import AddTodo from "@/components/AddTodo";
 import TodoList from "@/components/TodoList";
-
+import axios from "@/plugins/axios";
 export default {
   components: {
     AddTodo,
     TodoList
   },
-  created() {
-    console.log("API_KEY:", process.env.API_KEY);
+  computed: {
+    user() {
+      return this.$store.state.currentUser;
+    }
   },
   data() {
     return {
@@ -23,10 +26,9 @@ export default {
     };
   },
   methods: {
-    addTodo(title) {
-      this.todos.push({
-        title
-      });
+    async addTodo(todo) {
+      const { data } = await axios.post("/v1/todos", { todo });
+      this.todos.push(data);
     }
   }
 };
