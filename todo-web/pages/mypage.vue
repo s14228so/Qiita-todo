@@ -16,6 +16,11 @@ export default {
       return this.$store.state.currentUser;
     }
   },
+  fetch({ store, redirect }) {
+    if (!store.state.currentUser) {
+      return redirect("/login");
+    }
+  },
   methods: {
     logOut() {
       firebase

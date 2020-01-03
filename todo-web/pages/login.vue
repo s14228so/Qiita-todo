@@ -32,25 +32,10 @@ export default {
   },
   methods: {
     login() {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then(() => {
-          this.$router.push("/");
-        })
-        .catch(error => {
-          console.log(error);
-          this.error = (code => {
-            switch (code) {
-              case "auth/user-not-found":
-                return "メールアドレスが間違っています";
-              case "auth/wrong-password":
-                return "※パスワードが正しくありません";
-              default:
-                return "※メールアドレスとパスワードをご確認ください";
-            }
-          })(error.code);
-        });
+      this.$store.dispatch("login", {
+        email: this.email,
+        password: this.password
+      });
     }
   }
 };

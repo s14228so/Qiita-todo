@@ -1,5 +1,5 @@
 <template>
-  <div class="loader-container">
+  <div class="loader-container" v-if="loading">
     <div class="loaders">
       <div class="ball-clip-rotate">
         <div class="ball"></div>
@@ -13,6 +13,11 @@ import "loaders.css";
 export default {
   data() {
     return {};
+  },
+  computed: {
+    loading() {
+      return this.$store.state.loading;
+    }
   }
 };
 </script>
