@@ -23,7 +23,7 @@
           :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
           @click:append="show2 = !show2"
         ></v-text-field>
-        <v-btn class="mr-4" @click="submit">submit</v-btn>
+        <v-btn class="mr-4" @click="signup">submit</v-btn>
         <p v-if="error" class="errors">{{error}}</p>
       </form>
     </v-col>
@@ -45,10 +45,12 @@ export default {
     };
   },
   methods: {
-    submit() {
+    signup() {
       if (this.password !== this.passwordConfirm) {
         this.error = "※パスワードとパスワード確認が一致していません";
       }
+
+      this.$store.commit("setLoading", true);
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
@@ -58,11 +60,14 @@ export default {
             name: this.name,
             uid: res.user.uid
           };
-          axios.post("/v1/users", { user }).then(() => {
+          axios.post("/v1/users", { user }).then(res => {
+            this.$store.commit("setLoading", false);
+            this.$store.commit("setUser", res.data);
             this.$router.push("/");
           });
         })
         .catch(error => {
+          this.$store.commit("setLoading", false);
           this.error = (code => {
             switch (code) {
               case "auth/email-already-in-use":

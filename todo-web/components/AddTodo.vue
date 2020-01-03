@@ -31,7 +31,7 @@ export default {
         user_id: this.user.id,
         is_done: false
       };
-      this.$emit("submit", todo); //この行を追加
+      this.$emit("submit", todo);
       this.title = "";
     }
   }
