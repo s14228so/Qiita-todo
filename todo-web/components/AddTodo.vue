@@ -28,8 +28,7 @@ export default {
     handleSubmit() {
       const todo = {
         title: this.title,
-        user_id: this.user.id,
-        is_done: false
+        user_id: this.user.id
       };
       this.$emit("submit", todo);
       this.title = "";
