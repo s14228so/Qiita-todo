@@ -1,6 +1,7 @@
 <template>
   <div v-if="user">
     <p>{{user.name}}</p>
+    <li class="errors" v-for="(error, i) in errors" :key="i">{{error}}</li>
     <AddTodo @submit="addTodo" />
     <TodoList :todos="user.todos" />
   </div>
@@ -15,9 +16,15 @@ export default {
     AddTodo,
     TodoList
   },
+  data() {
+    return {};
+  },
   computed: {
     user() {
       return this.$store.state.currentUser;
+    },
+    errors() {
+      return this.$store.state.errors;
     }
   },
   fetch({ store, redirect }) {
@@ -32,15 +39,28 @@ export default {
   },
   methods: {
     async addTodo(todo) {
-      const { data } = await axios.post("/v1/todos", { todo });
-      this.$store.commit("setUser", {
-        ...this.user,
-        todos: [...this.user.todos, data]
-      });
+      try {
+        const { data } = await axios.post("/v1/todos", { todo });
+        this.$store.commit("setUser", {
+          ...this.user,
+          todos: [...this.user.todos, data]
+        });
+      } catch (error) {
+        const { status } = error.response;
+        if (status === 422) {
+          this.$store.commit("setErrors", "タイトルが空です");
+        }
+      }
     }
+  },
+  destroyed() {
+    this.$store.commit("setErrors", "");
   }
 };
 </script>
 
-<style>
+<style scoped>
+.errors {
+  color: "red";
+}
 </style>

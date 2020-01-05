@@ -1,3 +1,5 @@
+import state from "./state"
+
 const mutations = {
     setUser(state, payload) {
         state.currentUser = payload
@@ -7,7 +9,11 @@ const mutations = {
     },
     setNotice(state, payload) {
         state.notification = payload
-    }
+    },
+    setError(state, payload) {
+        state.errors = payload
+    },
+
 }
 
 export default mutations

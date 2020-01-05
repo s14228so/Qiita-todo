@@ -44,6 +44,7 @@ export default {
       error: ""
     };
   },
+  mounted() {},
   methods: {
     signup() {
       if (this.password !== this.passwordConfirm) {
