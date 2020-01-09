@@ -1,7 +1,6 @@
 <template>
   <div v-if="user">
     <p>{{user.name}}</p>
-
     <li class="errors" v-for="(error, i) in errors" :key="i">{{error}}</li>
     <AddTodo @submit="addTodo" />
     <TodoList :todos="user.todos" />
@@ -49,7 +48,7 @@ export default {
       } catch (error) {
         const { status } = error.response;
         if (status === 422) {
-          this.$store.commit("setErrors", "タイトルが空です");
+          this.$store.commit("setError", "タイトルが空です");
         }
       }
     }
