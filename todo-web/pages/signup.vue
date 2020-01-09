@@ -60,7 +60,7 @@ export default {
         name: this.name
       };
 
-      this.$store.disptch("signUp", payload);
+      this.$store.dispatch("signUp", payload);
     }
   }
 };
