@@ -45,6 +45,7 @@ export default {
           ...this.user,
           todos: [...this.user.todos, data]
         });
+        this.$store.commit("clearErrors");
       } catch (error) {
         const { status } = error.response;
         if (status === 422) {
