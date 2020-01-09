@@ -3,6 +3,10 @@
 # Logs
 .env
 
+
+env*
+
+hosting*
 /logs
 *.log
 npm-debug.log*

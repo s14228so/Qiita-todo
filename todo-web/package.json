@@ -7,11 +7,14 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
+    "build:stg": "cross-env NODE_ENV=\"staging\" nuxt build",
+    "build:prod": "cross-env NODE_ENV=\"production\" nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
+    "cross-env": "^6.0.3",
     "firebase": "^7.6.1",
     "loaders.css": "^0.1.2",
     "material-design-icons-iconfont": "^5.0.1",
