@@ -11,7 +11,7 @@ const mutations = {
         state.notification = payload
     },
     setError(state, payload) {
-        state.errors = payload
+        state.errors = [...state.errors, payload]
     },
 
 }

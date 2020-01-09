@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 2020_01_02_150758) do
 
   create_table "todos", force: :cascade do |t|
     t.string "title"
-    t.boolean "is_done"
     t.string "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

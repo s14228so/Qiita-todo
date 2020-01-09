@@ -49,39 +49,15 @@ export default {
     signup() {
       if (this.password !== this.passwordConfirm) {
         this.error = "※パスワードとパスワード確認が一致していません";
+        return;
       }
+      const payload = {
+        email: this.email,
+        password: this.password,
+        name: this.name
+      };
 
-      this.$store.commit("setLoading", true);
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
-        .then(res => {
-          const user = {
-            email: res.user.email,
-            name: this.name,
-            uid: res.user.uid
-          };
-          axios.post("/v1/users", { user }).then(res => {
-            this.$store.commit("setLoading", false);
-            this.$store.commit("setUser", res.data);
-            this.$router.push("/");
-          });
-        })
-        .catch(error => {
-          this.$store.commit("setLoading", false);
-          this.error = (code => {
-            switch (code) {
-              case "auth/email-already-in-use":
-                return "既にそのメールアドレスは使われています";
-              case "auth/wrong-password":
-                return "※パスワードが正しくありません";
-              case "auth/weak-password":
-                return "※パスワードは最低6文字以上にしてください";
-              default:
-                return "※メールアドレスとパスワードをご確認ください";
-            }
-          })(error.code);
-        });
+      this.$store.disptch("signUp", payload);
     }
   }
 };
