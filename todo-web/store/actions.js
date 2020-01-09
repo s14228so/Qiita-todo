@@ -52,6 +52,13 @@ const actions = {
                 };
                 axios.post("/v1/users", { user }).then(res => {
                     commit("setLoading", false);
+                    commit("setNotice", {
+                        status: true,
+                        message: "新規登録しました"
+                    });
+                    setTimeout(() => {
+                        commit("setNotice", {});
+                    }, 2000);
                     commit("setUser", res.data);
                     this.$router.push("/");
                 });
