@@ -1,6 +1,9 @@
 import colors from 'vuetify/es5/util/colors'
 
-require('dotenv').config();
+// require('dotenv').config(); .envの場合
+
+const environment = process.env.NODE_ENV || 'development';
+const cross_env = require(`./env.${environment}.js`) //cross-envの場合 => 記事の最後の方で紹介してます。
 
 
 export default {
@@ -40,6 +43,8 @@ export default {
     "@/plugins/firebase",
     "@/plugins/auth-check"
   ],
+
+  env: cross_env, //追加
   /*
   ** Nuxt.js dev-modules
   */
