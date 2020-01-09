@@ -24,7 +24,7 @@
           @click:append="show2 = !show2"
         ></v-text-field>
         <v-btn class="mr-4" @click="signup">submit</v-btn>
-        <p v-if="error" class="errors">{{error}}</p>
+        <p v-for="(error,i) in errors" :key="i" class="errors">{{error}}</p>
       </form>
     </v-col>
   </v-row>
@@ -40,11 +40,14 @@ export default {
       password: "",
       passwordConfirm: "",
       show1: false,
-      show2: false,
-      error: ""
+      show2: false
     };
   },
-  mounted() {},
+  computed: {
+    errors() {
+      return this.$store.state.errors;
+    }
+  },
   methods: {
     signup() {
       if (this.password !== this.passwordConfirm) {

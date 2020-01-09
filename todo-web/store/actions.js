@@ -30,7 +30,7 @@ const actions = {
                             return "※メールアドレスとパスワードをご確認ください";
                     }
                 })(error.code);
-                commit("setErrors", errorMsg)
+                commit("setError", errorMsg)
             });
     },
     signUp({
@@ -72,7 +72,7 @@ const actions = {
                     }
                 })(error.code);
 
-                commit("setErrors", errorMsg)
+                commit("setError", errorMsg)
             });
 
     }

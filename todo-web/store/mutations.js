@@ -13,6 +13,9 @@ const mutations = {
     setError(state, payload) {
         state.errors = [...state.errors, payload]
     },
+    clearErrors(state, _) {
+        state.errors = []
+    },
 
 }
 
