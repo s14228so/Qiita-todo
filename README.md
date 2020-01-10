@@ -1,5 +1,5 @@
-# 概要
- Qiita Rails API x Nuxt x Firebase Todo Appチュートリアル用のリポジトリです。
+#  Qiita Rails API x Nuxt x Firebase Todo Appチュートリアル用のリポジトリ
+
 
 ## Environment
 Rails 6.0.2.1
@@ -44,5 +44,6 @@ module.exports = {
 }
 ```
 
-
+```
 $ npm run dev 
+```
