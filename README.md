@@ -1,4 +1,4 @@
-#  Qiita Rails API x Nuxt x Firebase Todo Appチュートリアル用のリポジトリ
+#  Qiita Todo Appチュートリアル用のリポジトリ
 
 
 ## Environment
