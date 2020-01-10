@@ -31,6 +31,7 @@ export default {
     store.watch(
       state => state.currentUser,
       (newUser, oldUser) => {
+        console.log({ newUser });
         if (!newUser) {
           return redirect("/login");
         }
