@@ -2,10 +2,9 @@
 
 
 ## Environment
-Rails 6.0.2.1 
-ruby 2.5.3
-npm 6.13.4
-
+- Rails 6.0.2.1 
+- ruby 2.5.3  
+- npm 6.13.4 
 
 ## SetUp
 
@@ -18,6 +17,8 @@ $ git clone https://github.com/s14228so/Qiita-todo.git
 ```
 $ cd todo-api
 $ bundle install
+$ rails db:migrate 
+$ rails s -p 5000
 ```
 
 
