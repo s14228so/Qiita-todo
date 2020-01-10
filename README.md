@@ -29,7 +29,9 @@ $ npm install
 ```
 
 ※env.development.jsをプロジェクトルートに作成し、
-```
+FirebaseのAPI_KEYなどを追記する
+
+```env.development.js
 module.exports = {
     API_ENDPOINT: 'http://localhost:8080',
     API_KEY: "",
