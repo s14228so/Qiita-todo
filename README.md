@@ -2,9 +2,9 @@
 
 
 ## Environment
-Rails 6.0.2.1
-ruby 2.5.3
-npm 6.13.4
+Rails 6.0.2.1 \n
+ruby 2.5.3  \n
+npm 6.13.4  \n
 
 
 ## SetUp
