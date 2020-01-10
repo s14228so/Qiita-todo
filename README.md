@@ -17,6 +17,8 @@ $ git clone https://github.com/s14228so/Qiita-todo.git
 ```
 $ cd todo-api
 $ bundle install
+$ rails db:migrate 
+$ rails s -p 5000
 ```
 
 
